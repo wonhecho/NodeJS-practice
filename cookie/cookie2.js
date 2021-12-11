@@ -21,7 +21,7 @@ http.createServer(async (req, res) => {
       Location: '/',
       'Set-Cookie' : `name=${encodeURIComponent(name)}; Expires = ${expires.toGMTString()}; HttpOnly; path=/`,
     });
-    res.end();
+    res.end("end");
   }else if (cookies.name){
     res.writeHead(200,{ 'Content-Type': 'text/plain; charset=utf-8'});
     res.end(`${cookies.name}님 안녕하세요`);
