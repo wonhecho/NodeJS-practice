@@ -1,0 +1,15 @@
+
+npm i morgan cookie-parser express-session dotenv  
+
+1. morgan -> .env 파일을 별도로 생성. env파일을 잘 관리하여야 보안 유지.
+             morgan의 인수로는 dev, combined, common, short, tiny 등을 넣을 수 있고, [method][주소][상태][응답속도][응답바이트]
+2. static -> 정적 파일들을 제공.
+
+3. body-parser -> 요청 본문에 데이터를 해석하여, req.body 객체를 만들어주는 미들웨어 Form, AJAX 요청 데이터 처리.
+
+4. cookie-pareser -> req.cookies 객체에 들어간다. name=?? 쿠키를 보냈다면, req.cookies는 {name : '??'}이 된다.
+                     첫번째 인수로 비밀 키를 넣어줄 수 있다. 서명된 쿠키의 경우 .sign같은 모야잉 된다. 
+
+5. express-session -> 세션 관리용 미들웨어, 로그인 등의 이유로 세션을 구현하거나 특정 사용자를 위한 데이터를 임지석으로 저장해둘 때 유용
+                      세션 관리 시 클라이언트에 쿠키를 보낸다. 
+                      
