@@ -57,7 +57,7 @@ async function getComment(id){
       edit.addEventListener('click', async() => {
         const newComment = prompt('바꿀 내용을 입력하세요');
         if(!newComment){
-          return alert('내용을 반드시 입력하셔야 합니다');
+          return alert('내용을 반드시 입력해주세요');
         }
         try{
           await axios.patch(`/comments/${comment.id}`, {comment:newComment});
