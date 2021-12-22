@@ -7,7 +7,7 @@ const connect = () => {
   mongoose.connect('mongodb://cho:root@127.0.0.1:27017/admin',{
     dbName: 'nodejs', 
     useNewUrlParser: true,
-    // useCreateIndex: true,                                    mongoose 6버전부터 지원하지 않음.
+    // useCreateIndex: true,                                    mongoose 6버전부터 지원하지 않음
   }, (error) =>{
     if (error) {
       console.log('mongo connect error',error);
