@@ -8,7 +8,7 @@ module.exports = () => {
     done(null,user.id);
   });
   passport.deserializeUser((id,done) => {
-    User.findOne({ 
+    User.findOne({
     where: { id },
     include: [{
       model: User,

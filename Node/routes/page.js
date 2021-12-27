@@ -6,10 +6,29 @@ const router = express.Router();
 
 router.use((req,res,next)=>{
   res.locals.user = req.user;
-  res.locals.followerCount = req.user ? req.user.Followers.length: 0;
-  res.locals.followingCount = req.user ? req.user.Followings.length: 0;
+  res.locals.followerCount = req.user ? req.user.Followers.length : 0;
+  res.locals.followingCount = req.user ? req.user.Followings.length : 0;
   res.locals.followerIdList = req.user ? req.user.Followings.map(f=>f.id) : [];
   next();
+});
+
+router.get('/', async (req, res, next)=>{
+  try{
+    const posts = await Post.findAll({
+      include: {
+        model: User,
+        attributes: ['id', 'nick'],
+      },
+      order: [['createdAt', 'DESC']],
+    });
+    res.render('main',{
+    title: 'Hello world',
+    twits: posts,
+  });
+  } catch(err){
+    console.error(err);
+    next(err);
+  }
 });
 
 router.get('/profile', isLoggedIn, (req,res)=>{
@@ -26,7 +45,7 @@ router.get('/hashtag', async (req, res, next) => {
     return res.redirect('/');
   }
   try {
-    const hashtag = await Hashtag.findOne({ where: {title: query}});
+    const hashtag = await Hashtag.findOne({ where: { title: query } });
     let posts = [];
     if(hashtag) {
       posts = await hashtag.getPosts({include: [{model:User}] });
@@ -39,27 +58,6 @@ router.get('/hashtag', async (req, res, next) => {
   } catch (error){
     console.error(error);
     return next(error);
-  }
-});
-
-module.exports = router;
-
-router.get('/', async (req, res, next)=>{
-  try{
-    const posts = await Post.findAll({
-      include: {
-        moel: User,
-        attributes: ['id', 'nick'],
-      },
-      order: [['createdAt', 'DESC']],
-    });
-    res.render('main',{
-    title: 'Hello world',
-    twits: posts,
-  });
-  } catch(err){
-    console.error(err);
-    next(err);
   }
 });
 
