@@ -13,7 +13,7 @@ const authRouter = require('./routes/auth');
 const postRouter = require('./routes/post');
 const userRouter = require('./routes/user');
 const { sequelize } = require('./models');
-const passportConfig = require('./passport');
+const passportConfig = require('./passport');         //passport
 
 const app = express();
 passportConfig();
