@@ -27,7 +27,7 @@ router.post('/join', isNotLoggedIn, async (req,res, next)=>{
 });
 
 router.post('/login', isNotLoggedIn, (req,res,next) => {
-  passport.authenticate('local', (authError, user, info) => {
+  passport.authenticate('local', (authError, user, info) => {   // 두번째 인수로 {session : false}를 이용하면 세션을 사용하지 않고 JWT로 로그인이 가능.
     if(authError){
       console.error(authError);
       return next(authError);
