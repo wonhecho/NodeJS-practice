@@ -18,7 +18,7 @@ nunjucks.configure('views',{
 connect();
 
 app.use(morgan('dev'));
-app.use(express.static(path.join(__dirname,'public')));
+app.use(express.static(path.join(__dirname,'public')));   //public 확인
 app.use(express.json());
 app.use(express.urlencoded({ extended: false}));
 
