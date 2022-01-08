@@ -3,7 +3,7 @@ const fs = require('fs').promises;
 const url = require('url');
 const qs = require('querystring');
 
-const parseCookies = (cookie = '') =>
+const parseCookies = (cookie = '') =>               //쿠키 설정
 cookie
   .split(';')
   .map(v=>v.split('='))
