@@ -15,10 +15,10 @@ const userRouter = require('./routes/user');
 const { sequelize } = require('./models');
 const passportConfig = require('./passport');         //passport 사용자 인증 방식..
 
-const app = express();
+const app = express();                                //express 설정
 passportConfig();
-app.set('port', process.env.PORT || 8001);
-app.set('view engine', 'html');
+app.set('port', process.env.PORT || 8001);            //8001포트 번호
+app.set('view engine', 'html');                       //html형식 
 nunjucks.configure('views',{
   express: app,
   watch: true,
